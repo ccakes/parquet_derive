@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "parquet_derive",
+    "parquet_derive_test",
+]
