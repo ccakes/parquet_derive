@@ -26,19 +26,21 @@ trait RecordWriter<T> {
 
 #[derive(ParquetRecordWriter)]
 struct ACompleteRecord<'a> {
-    pub a_bool: bool,
+    // pub a_bool: bool,
     pub a_str: &'a str,
-    pub a_string: String,
-    pub a_borrowed_string: &'a String,
-    pub maybe_a_str: Option<&'a str>,
-    pub maybe_a_string: Option<String>,
-    pub magic_number: i32,
-    pub low_quality_pi: f32,
+    // pub a_string: String,
+    // pub a_borrowed_string: &'a String,
+    // pub maybe_a_str: Option<&'a str>,
+    // pub maybe_a_string: Option<String>,
+    // pub magic_number: i32,
+    // pub low_quality_pi: f32,
     pub high_quality_pi: f64,
-    pub maybe_pi: Option<f32>,
-    pub maybe_best_pi: Option<f64>,
-    pub borrowed_maybe_a_string: &'a Option<String>,
-    pub borrowed_maybe_a_str: &'a Option<&'a str>,
+    pub a_small_number: i32,
+    pub a_large_number: i64,
+    // pub maybe_pi: Option<f32>,
+    // pub maybe_best_pi: Option<f64>,
+    // pub borrowed_maybe_a_string: &'a Option<String>,
+    // pub borrowed_maybe_a_str: &'a Option<&'a str>,
     //  pub unsigned_magic_number: u32,
 }
 

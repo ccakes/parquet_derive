@@ -23,4 +23,5 @@ edition = "2018"
 
 [dependencies]
 parquet = "0.14.0"
+# parquet = { git = "https://github.com/ccakes/arrow" }
 parquet_derive = {path = "../parquet_derive"}

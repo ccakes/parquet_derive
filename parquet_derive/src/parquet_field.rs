@@ -420,6 +420,28 @@ impl Type {
         }
     }
 
+    fn logical_type(&self) -> Option<parquet::basic::LogicalType> {
+        use parquet::basic::LogicalType;
+
+        let last_part = self.last_part();
+
+        match last_part.trim() {
+            "u8" =>  Some(LogicalType::UINT_8),
+            "u16" => Some(LogicalType::UINT_16),
+            "u32" => Some(LogicalType::UINT_32),
+            "u64" => Some(LogicalType::UINT_64),
+
+            "i8" =>  Some(LogicalType::INT_8),
+            "i16" => Some(LogicalType::INT_16),
+            "i32" => Some(LogicalType::INT_32),
+            "i64" => Some(LogicalType::INT_64),
+
+            "String" => Some(LogicalType::UTF8),
+
+            f @ _ => unimplemented!("sorry, don't handle {} yet!", f),
+        }
+    }
+
     /// Convert a parsed rust field AST in to a more easy to manipulate
     /// parquet_derive::Field
     fn from(f: &syn::Field) -> Self {
