@@ -17,11 +17,11 @@
 
 [package]
 name = "parquet_derive_test"
-version = "0.16.0"
+version = "0.17.0"
 authors = ["Apache Arrow <dev@arrow.apache.org>"]
 edition = "2018"
 
 [dependencies]
-parquet = "0.16.0"
-# parquet = { git = "https://github.com/ccakes/arrow" }
+parquet = "0.17.0"
+# parquet = { git = "https://github.com/apache/arrow" }
 parquet_derive = {path = "../parquet_derive"}

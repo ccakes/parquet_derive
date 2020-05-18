@@ -17,7 +17,7 @@
 
 [package]
 name = "parquet_derive"
-version = "0.16.0"
+version = "0.17.1"
 authors = ["Apache Arrow <dev@arrow.apache.org>"]
 edition = "2018"
 
@@ -33,5 +33,5 @@ uuid = []
 proc-macro2 = "0.4"
 quote = "0.6.10"
 syn = { version = "0.15.22", features = ["full", "extra-traits"] }
-parquet = "0.16.0"
-# parquet = { git = "https://github.com/apache/arrow" }
+# parquet = "0.17.0"
+parquet = { git = "https://github.com/apache/arrow" }
