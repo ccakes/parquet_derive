@@ -58,9 +58,8 @@ struct MaybeIdent(Option<syn::Ident>);
 
 impl quote::ToTokens for MaybeIdent {
   fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
-    tokens.append(proc_macro2::Ident::new(
-      format!("{}", self).as_str(),
-      proc_macro2::Span::call_site()
+    tokens.append(proc_macro2::Literal::string(
+      format!("{}", self).as_str()
     ));
   }
 }
