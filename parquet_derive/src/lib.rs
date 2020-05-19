@@ -111,7 +111,7 @@ pub fn parquet_record_writer(input: proc_macro::TokenStream) -> proc_macro::Toke
               match row_group_writer.close_column(column_writer) {
                 Ok(res) => res,
                 Err(err) => {
-                  panic!("error writing {}: {}", #field_names, err);
+                  panic!("{}: {}", #field_names, err);
                 }
               };
           }
