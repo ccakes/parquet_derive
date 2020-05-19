@@ -50,6 +50,29 @@ mod parquet_field;
 /// }
 /// ```
 ///
+
+use quote::TokenStreamExt;
+
+// Newtype for Option<syn::Ident>
+struct MaybeIdent(Option<syn::Ident>);
+
+impl quote::ToTokens for MaybeIdent {
+  fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
+    tokens.append(proc_macro2::Literal::string(
+      format!("{}", self).as_str()
+    ));
+  }
+}
+
+impl std::fmt::Display for MaybeIdent {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    match &self.0 {
+      Some(ident) => write!(f, "{}", ident),
+      None => write!(f, "")
+    }
+  }
+}
+
 #[proc_macro_derive(ParquetRecordWriter)]
 pub fn parquet_record_writer(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input: DeriveInput = parse_macro_input!(input as DeriveInput);
@@ -58,6 +81,11 @@ pub fn parquet_record_writer(input: proc_macro::TokenStream) -> proc_macro::Toke
         Data::Enum(_) => unimplemented!("don't support enum"),
         Data::Union(_) => unimplemented!("don't support union"),
     };
+
+    let field_names: Vec<_> = fields
+      .iter()
+      .map(|f: &syn::Field| MaybeIdent(f.ident.clone()))
+      .collect();
 
     let field_infos: Vec<_> = fields
         .iter()
@@ -80,7 +108,12 @@ pub fn parquet_record_writer(input: proc_macro::TokenStream) -> proc_macro::Toke
           {
               let mut column_writer = row_group_writer.next_column().unwrap().unwrap();
               #writer_snippets
-              row_group_writer.close_column(column_writer).unwrap();
+              match row_group_writer.close_column(column_writer) {
+                Ok(res) => res,
+                Err(err) => {
+                  panic!("{}: {}", #field_names, err);
+                }
+              };
           }
         );*
       }
