@@ -26,22 +26,22 @@ trait RecordWriter<T> {
 
 #[derive(ParquetRecordWriter)]
 struct ACompleteRecord<'a> {
-    // pub a_bool: bool,
+    pub a_bool: bool,
     pub a_str: &'a str,
-    // pub a_string: String,
-    // pub a_borrowed_string: &'a String,
-    // pub maybe_a_str: Option<&'a str>,
-    // pub maybe_a_string: Option<String>,
-    // pub magic_number: i32,
-    // pub low_quality_pi: f32,
+    pub a_string: String,
+    pub a_borrowed_string: &'a String,
+    pub maybe_a_str: Option<&'a str>,
+    pub maybe_a_string: Option<String>,
+    pub magic_number: i32,
+    pub low_quality_pi: f32,
     pub high_quality_pi: f64,
     pub a_small_number: i32,
     pub a_large_number: i64,
-    // pub maybe_pi: Option<f32>,
-    // pub maybe_best_pi: Option<f64>,
-    // pub borrowed_maybe_a_string: &'a Option<String>,
-    // pub borrowed_maybe_a_str: &'a Option<&'a str>,
-    //  pub unsigned_magic_number: u32,
+    pub maybe_pi: Option<f32>,
+    pub maybe_best_pi: Option<f64>,
+    pub borrowed_maybe_a_string: &'a Option<String>,
+    pub borrowed_maybe_a_str: &'a Option<&'a str>,
+    // pub unsigned_magic_number: u32,
 }
 
 #[cfg(test)]
@@ -70,6 +70,8 @@ mod tests {
             REQUIRED INT32           magic_number;
             REQUIRED FLOAT           low_quality_pi;
             REQUIRED DOUBLE          high_quality_pi;
+            REQUIRED INT32           a_small_number;
+            REQUIRED INT64           a_large_number;
             OPTIONAL FLOAT           maybe_pi;
             OPTIONAL DOUBLE          maybe_best_pi;
             OPTIONAL BINARY          borrowed_maybe_a_string (UTF8);
@@ -96,6 +98,8 @@ mod tests {
             magic_number: 100,
             low_quality_pi: 3.14,
             high_quality_pi: 3.1415,
+            a_small_number: 1_222_333_444,
+            a_large_number: 11_222_333_444,
             maybe_pi: Some(3.14),
             maybe_best_pi: Some(3.1415),
             borrowed_maybe_a_string: &maybe_a_string,
