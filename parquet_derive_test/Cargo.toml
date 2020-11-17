@@ -17,10 +17,10 @@
 
 [package]
 name = "parquet_derive_test"
-version = "1.0.1"
+version = "2.0.0"
 authors = ["Apache Arrow <dev@arrow.apache.org>"]
 edition = "2018"
 
 [dependencies]
-parquet = "1.0.1"
+parquet = "2.0.0"
 parquet_derive = {path = "../parquet_derive"}

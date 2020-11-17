@@ -32,9 +32,9 @@ dependencies = [
 
 [[package]]
 name = "arrow"
-version = "1.0.1"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a624056cf40e99ddbdd4fc624508af6b83baf52d73b12104707760b7e31794c7"
+checksum = "7277b39e5f419c207c5e01f56ad8a91ffcc78548b85d6bb083560a667b567e11"
 dependencies = [
  "chrono",
  "csv",
@@ -481,9 +481,9 @@ dependencies = [
 
 [[package]]
 name = "parquet"
-version = "1.0.1"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "05e0b7eee769602da455dbee03697e29e5d3630d14f11dbc5ac3052dfef815ce"
+checksum = "63bfa03025e71790395361efbcb84f1a9184ead1e608ef16971373dfe94a896e"
 dependencies = [
  "arrow",
  "brotli",
@@ -493,7 +493,6 @@ dependencies = [
  "lz4",
  "num-bigint",
  "parquet-format",
- "serde_json",
  "snap",
  "thrift",
  "zstd",
@@ -510,7 +509,7 @@ dependencies = [
 
 [[package]]
 name = "parquet_derive"
-version = "1.0.1"
+version = "2.0.0"
 dependencies = [
  "parquet",
  "proc-macro2",
@@ -520,7 +519,7 @@ dependencies = [
 
 [[package]]
 name = "parquet_derive_test"
-version = "1.0.1"
+version = "2.0.0"
 dependencies = [
  "parquet",
  "parquet_derive",

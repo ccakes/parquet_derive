@@ -17,7 +17,7 @@
 
 [package]
 name = "parquet_derive"
-version = "1.0.1"
+version = "2.0.0"
 authors = ["Apache Arrow <dev@arrow.apache.org>"]
 edition = "2018"
 
@@ -33,4 +33,4 @@ uuid = []
 proc-macro2 = "0.4"
 quote = "0.6.10"
 syn = { version = "0.15.22", features = ["full", "extra-traits"] }
-parquet = "1.0.1"
+parquet = "2.0.0"
